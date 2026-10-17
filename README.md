@@ -23,6 +23,11 @@ Configure the model API in your shell. Never commit API keys to Git:
 Generate an AI-assisted draft:
     python scripts/generate_draft.py content/sample-post.json
 
+Generate actual PNG assets from a draft record (no image API required):
+    python scripts/generate_assets.py content/drafts/<draft-record>.json
+
+The asset renderer writes PNG carousel slides, Story frames, or feed/Reel cover graphics plus an asset-manifest.json under content/assets/<content-id>/. Reel covers and scripts are not finished video files; Reel records remain incomplete until an MP4 is supplied and checked.
+
 Run the separate AI review:
     python scripts/review_draft.py content/drafts/sample-001-ai-draft.json
 
