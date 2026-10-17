@@ -1,10 +1,11 @@
-"""Unit tests for Renomedy content validation and AI draft helpers."""
+"""Unit tests for content validation, draft helpers and review-state mapping."""
 import json
 import unittest
 
 from jsonschema import Draft202012Validator
 from new_content import create_record, slugify
 from generate_draft import build_user_prompt, parse_model_json
+from review_draft import apply_review, parse_review
 from validate_content import SCHEMA_PATH, validate_record
 
 
@@ -81,6 +82,36 @@ class AIDraftHelperTests(unittest.TestCase):
                                     "takeaway": "Keep a list.", "cta": "Save this."})
         self.assertIn('"format": "carousel"', prompt)
         self.assertNotIn("RENOMEDY_LLM_API_KEY", prompt)
+
+
+class AIReviewTests(unittest.TestCase):
+    def test_review_parser_rejects_unknown_verdict(self):
+        with self.assertRaises(ValueError):
+            parse_review('{"verdict":"APPROVED","summary":"ok","findings":[]}')
+
+    def test_pass_only_moves_to_human_approval_queue(self):
+        record = {**ContentValidationTests.valid_record, "human_approved": False}
+        review = {"verdict": "PASS", "summary": "No obvious issue found.", "findings": []}
+        output = apply_review(record, review)
+        self.assertEqual(output["status"], "awaiting_human_approval")
+        self.assertFalse(output["human_approved"])
+        self.assertTrue(output["review_report"]["human_review_required"])
+
+    def test_needs_edits_and_block_map_to_safe_states(self):
+        record = ContentValidationTests.valid_record
+        self.assertEqual(apply_review(record, {"verdict": "NEEDS_EDITS", "summary": "", "findings": []})["status"], "needs_edits")
+        self.assertEqual(apply_review(record, {"verdict": "BLOCK", "summary": "", "findings": []})["status"], "blocked")
+
+    def test_reviewed_record_matches_schema(self):
+        record = {**ContentValidationTests.valid_record, "creative": {
+            "hook": "Checklist", "caption": "Save this.", "body": ["Cover", "Slide 1"],
+            "visual_notes": "Use simple icons.", "alt_text": "Checklist graphic",
+            "reel_script": "", "story_frames": [], "cover_text": "Checklist"
+        }}
+        review = {"verdict": "PASS", "summary": "No obvious issue found.", "findings": []}
+        output = apply_review(record, review)
+        errors = list(Draft202012Validator(ContentValidationTests.schema).iter_errors(output))
+        self.assertEqual(errors, [])
 
 
 if __name__ == "__main__":
