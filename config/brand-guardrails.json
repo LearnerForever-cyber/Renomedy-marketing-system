@@ -1,0 +1,23 @@
+{
+  "brand": "Renomedy",
+  "primary_channel": "Instagram",
+  "content_principles": ["clarity", "continuity", "coordination", "trust"],
+  "audience_hypotheses": [
+    "family medication coordinators",
+    "busy adults managing family routines",
+    "caregivers coordinating responsibilities"
+  ],
+  "product_truth_policy": "Only describe features confirmed by the product team as currently available.",
+  "healthcare_policy": {
+    "individualized_medical_advice": false,
+    "medication_change_recommendations": false,
+    "unsupported_medical_claims": false,
+    "human_review_required_for_medical_claims": true,
+    "human_approval_required_before_publishing": true
+  },
+  "privacy_policy": {
+    "ask_for_personal_health_information_in_public": false,
+    "publish_identifiable_health_stories_without_explicit_permission": false
+  },
+  "publishing_mode": "manual_until_explicitly_enabled"
+}
