@@ -1,68 +1,54 @@
 # Renomedy Marketing System
 
-An approval-first, agent-ready operating system for Renomedy's Instagram content and organic growth.
+An approval-first operating system for Renomedy's Instagram content and organic growth.
 
-> v0.1 is a human-operated scaffold: it drafts and organizes work, but does not autonomously publish. A human must review healthcare-related claims and approve every post.
-
-## First-release goals
-- Turn audience questions into Instagram content briefs.
-- Maintain a repeatable content calendar and brand voice.
-- Draft carousel, Reel, Story and caption concepts.
-- Apply healthcare-safety, privacy and brand checks.
-- Track organic performance and feed learning into future experiments.
+The current version can create structured ideas and generate AI-assisted creative drafts through an OpenAI-compatible chat API. It does not publish automatically. Human review and approval are required for every post.
 
 ## Product-truth rule
 Renomedy is being explored as a family medication-intelligence product. Do not claim features are live unless the product team verifies them. This system must not provide individualized medical advice, recommend medication changes, or promise clinical outcomes.
 
-## Structure
-- `strategy/` — audience hypotheses, positioning and growth plan
-- `agents/` — prompts for research, strategy, drafting, review and learning
-- `content/` — starter calendar, reusable brief and JSON content records
-- `ops/` — approval checklist, metrics and weekly workflow
-- `config/` — brand and safety guardrails
-- `scripts/` — content-record validation and draft scaffolding
-- `tests/` — regression tests for validation guardrails
-
 ## Quick start
-Install the validator dependency:
 
-```bash
-python -m pip install -r requirements.txt
-```
+Install dependencies:
+    python -m pip install -r requirements.txt
 
-Create a new content record (it starts as an unapproved idea):
+Create a starter idea:
+    python scripts/new_content.py --title "A family medication information checklist" --format carousel --pillar clarity --audience "Family members coordinating appointments" --takeaway "Keep an up-to-date list to review with a qualified professional." --cta "Save this checklist for your next appointment."
 
-```bash
-python scripts/new_content.py \
-  --title "A family medication information checklist" \
-  --format carousel \
-  --pillar clarity \
-  --audience "Family members coordinating appointments" \
-  --takeaway "Keep an up-to-date list to review with a qualified professional." \
-  --cta "Save this checklist for your next appointment."
-```
+Configure the model API in your shell. Never commit API keys to Git:
+    export RENOMEDY_LLM_API_KEY="your-api-key"
+    export RENOMEDY_LLM_MODEL="your-enabled-model"
+    export RENOMEDY_LLM_BASE_URL="https://api.openai.com/v1"
 
-Validate every JSON record in `content/` (including drafts in subfolders):
+Generate an AI-assisted draft from an existing JSON content record:
+    python scripts/generate_draft.py content/sample-post.json
 
-```bash
-python scripts/validate_content.py content/
-```
+The generator writes to content/drafts/ by default, marks the result review_needed, and keeps human_approved=false. It does not publish. The API key and model name are required; if either is missing, the script exits without making an API call.
 
-Run the automated tests:
+Validate content records and run tests:
+    python scripts/validate_content.py content/
+    PYTHONPATH=scripts python -m unittest discover -s tests -v
 
-```bash
-PYTHONPATH=scripts python -m unittest discover -s tests -v
-```
+## Workflow
+1. Research audience questions and retain sources/date/confidence.
+2. Turn supported insights into a brief.
+3. Generate a format-specific creative draft.
+4. Review medical claims, product truth, privacy, tone, and source quality.
+5. Obtain explicit human approval before manual publishing.
+6. Log the published URL and performance at consistent intervals.
 
-## Human approval is mandatory
-1. Read `strategy/instagram-growth-plan.md`.
-2. Confirm `config/brand-guardrails.json` against the actual product.
-3. Review every factual claim and its source; get qualified review where needed.
-4. Review privacy, brand voice, and product truth.
-5. Get explicit human approval before publishing.
-6. Log metrics in `ops/instagram-metrics.csv`.
+## Safety boundaries
+- Never ask people to share personal health details publicly.
+- Never advise an individual to start, stop, skip, combine, or change medication.
+- Never invent medical sources, statistics, product capabilities, endorsements, or clinical outcomes.
+- AI-generated content is untrusted until reviewed. Schema validation is not medical, legal, privacy, or brand clearance.
+- No Instagram publishing integration or analytics integration is included.
 
-A passing validator means the record meets structural and hard-coded checks. It is not a medical, legal, privacy, or brand clearance and never grants publishing permission.
-
-## Not included yet
-No model-provider wiring, automated research ingestion, Instagram API publishing, analytics integrations, or verified compliance/security claims. Add these only after selecting providers, access scopes and approval controls.
+## Repository structure
+- strategy/ — positioning, voice and growth plan
+- agents/ — role prompts and orchestration contract
+- content/ — calendar, briefs, schema and draft records
+- config/ — brand and safety guardrails
+- ops/ — approval and measurement workflows
+- scripts/ — idea creation, AI drafting and validation
+- tests/ — regression tests
