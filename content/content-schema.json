@@ -31,7 +31,22 @@
     "human_approved": {"type": "boolean"},
     "human_approver": {"type": "string"},
     "published_url": {"type": "string"},
-    "metrics": {"type": "object"}
+    "metrics": {"type": "object"},
+    "creative": {
+      "type": "object",
+      "required": ["hook", "caption", "body", "visual_notes", "alt_text", "reel_script", "story_frames", "cover_text"],
+      "properties": {
+        "hook": {"type": "string"},
+        "caption": {"type": "string"},
+        "body": {"type": "array", "items": {"type": "string"}},
+        "visual_notes": {"type": "string"},
+        "alt_text": {"type": "string"},
+        "reel_script": {"type": "string"},
+        "story_frames": {"type": "array", "items": {"type": "string"}},
+        "cover_text": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }
