@@ -115,14 +115,14 @@ class AIReviewTests(unittest.TestCase):
         self.assertEqual(apply_review(record, {"verdict": "BLOCK", "summary": "", "findings": []})["status"], "blocked")
 
     def test_reviewed_record_matches_schema(self):
-        record = {**ContentValidationTests.valid_record, "creative": {
+        record = {**sample_record(), "creative": {
             "hook": "Checklist", "caption": "Save this.", "body": ["Cover", "Slide 1"],
             "visual_notes": "Use simple icons.", "alt_text": "Checklist graphic",
             "reel_script": "", "story_frames": [], "cover_text": "Checklist"
         }}
         review = {"verdict": "PASS", "summary": "No obvious issue found.", "findings": []}
         output = apply_review(record, review)
-        errors = list(Draft202012Validator(ContentValidationTests.schema).iter_errors(output))
+        errors = list(Draft202012Validator(json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))).iter_errors(output))
         self.assertEqual(errors, [])
 
 
