@@ -39,3 +39,12 @@ Before wiring a model provider:
 
 ## Definition of done for the first usable workflow
 A team member can turn an insight into a draft, see all claims and sources, run validation, obtain a human review, approve the post, publish manually, and record results without losing the audit trail.
+
+
+## v0.5 — asset generation inside the pipeline
+- `scripts/generate_assets.py` renders real PNG assets from a generated content record using the provisional Renomedy design tokens.
+- Carousel records produce ordered slide PNGs; Story records produce portrait frame PNGs; founder posts produce a feed graphic; Reels produce a cover PNG and script file.
+- Every render writes an `asset-manifest.json` with paths, asset types, and an explicit human-approval state.
+- The renderer is deterministic and requires Pillow, but its generated artwork is a templated first pass—not a substitute for approved brand artwork or custom motion design.
+- Reel assets are explicitly marked video-incomplete until an MP4 is supplied and checked. The pipeline must not equate a cover/script with a finished video.
+- Next hardening step: add asset completeness checks to the review gate and attach the manifest to the reviewed content record before marking a package ready.
