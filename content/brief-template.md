@@ -1,0 +1,22 @@
+# Instagram content brief
+
+- **Working title:**
+- **Date / owner:**
+- **Audience hypothesis:**
+- **Problem in audience's words:**
+- **Pillar:** Clarity / Continuity / Coordination / Trust / Build in public
+- **Format:** Carousel / Reel / Story / Founder post
+- **One takeaway:**
+- **Evidence/source needed:**
+- **Draft hook:**
+- **Content outline:**
+- **CTA:**
+- **Success metric:**
+- **Product facts verified by:**
+- **Medical review needed?** Yes / No / Unsure
+- **Safety review:** Pending / Pass / Needs edits / Block
+- **Human approval:** Pending / Approved
+- **Published URL:**
+- **Results at 48 hours:**
+- **Results at 7 days:**
+- **Learning / next experiment:**
