@@ -62,7 +62,7 @@ def collect_paths(arguments: list[str]) -> list[Path]:
     for argument in arguments:
         path = Path(argument)
         if path.is_dir():
-            paths.extend(sorted(item for item in path.glob("*.json") if item.name != "content-schema.json"))
+            paths.extend(sorted(item for item in path.rglob("*.json") if item.name != "content-schema.json"))
         else:
             paths.append(path)
     return paths
