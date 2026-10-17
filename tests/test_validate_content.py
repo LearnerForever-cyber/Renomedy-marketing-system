@@ -1,11 +1,12 @@
-"""Unit tests for Renomedy's content validation guardrails."""
+"""Unit tests for Renomedy's content validation and draft scaffolding."""
+import json
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from jsonschema import Draft202012Validator
-
+from new_content import create_record, slugify
 from validate_content import SCHEMA_PATH, validate_record
-import json
 
 
 class ContentValidationTests(unittest.TestCase):
@@ -61,6 +62,34 @@ class ContentValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertTrue(any("not verified" in warning for warning in warnings))
         self.assertTrue(any("qualified human review" in warning for warning in warnings))
+
+
+class DraftScaffoldingTests(unittest.TestCase):
+    def test_slugify_title(self):
+        self.assertEqual(slugify("Family Medication Checklist!"), "family-medication-checklist")
+
+    def test_created_record_matches_schema_and_stays_unapproved(self):
+        record = create_record(
+            "Family checklist", "carousel", "clarity", "Family coordinators",
+            "Keep a list to review with a qualified professional.", "Save this post."
+        )
+        errors, _ = validate_record(record, ContentValidationTests.schema)
+        self.assertEqual(errors, [])
+        self.assertEqual(record["status"], "idea")
+        self.assertFalse(record["human_approved"])
+
+    def test_invalid_format_is_rejected(self):
+        with self.assertRaises(ValueError):
+            create_record("Title", "thread", "clarity", "", "Takeaway", "CTA")
+
+    def test_cli_output_directory_can_be_used(self):
+        with TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "draft.json"
+            record = create_record("Starter post", "story", "trust", "", "A clear takeaway", "Save this")
+            output.write_text(json.dumps(record), encoding="utf-8")
+            parsed = json.loads(output.read_text(encoding="utf-8"))
+            errors, _ = validate_record(parsed, ContentValidationTests.schema)
+            self.assertEqual(errors, [])
 
 
 if __name__ == "__main__":
