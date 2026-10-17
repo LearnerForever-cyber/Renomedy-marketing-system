@@ -4,14 +4,14 @@ on:
   push:
     paths:
       - "content/**/*.json"
-      - "scripts/validate_content.py"
+      - "scripts/**"
       - "tests/**"
       - "requirements.txt"
       - ".github/workflows/validate-content.yml"
   pull_request:
     paths:
       - "content/**/*.json"
-      - "scripts/validate_content.py"
+      - "scripts/**"
       - "tests/**"
       - "requirements.txt"
       - ".github/workflows/validate-content.yml"
