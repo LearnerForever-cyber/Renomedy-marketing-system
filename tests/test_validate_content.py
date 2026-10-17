@@ -9,6 +9,18 @@ from review_draft import apply_review, parse_review
 from validate_content import SCHEMA_PATH, validate_record
 
 
+def sample_record():
+    return {
+        "id": "test-001", "status": "drafted", "format": "carousel",
+        "pillar": "clarity", "working_title": "A practical checklist",
+        "audience_hypothesis": "Family coordinators",
+        "takeaway": "Keep a current list to review with a qualified professional.",
+        "cta": "Save this checklist.", "claims": [],
+        "product_features_mentioned": [], "asks_for_public_health_details": False,
+        "human_approved": False
+    }
+
+
 class ContentValidationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -90,7 +102,7 @@ class AIReviewTests(unittest.TestCase):
             parse_review('{"verdict":"APPROVED","summary":"ok","findings":[]}')
 
     def test_pass_only_moves_to_human_approval_queue(self):
-        record = {**ContentValidationTests.valid_record, "human_approved": False}
+        record = {**sample_record(), "human_approved": False}
         review = {"verdict": "PASS", "summary": "No obvious issue found.", "findings": []}
         output = apply_review(record, review)
         self.assertEqual(output["status"], "awaiting_human_approval")
