@@ -71,7 +71,7 @@ class DraftScaffoldingTests(unittest.TestCase):
     def test_created_record_matches_schema_and_stays_unapproved(self):
         record = create_record("Family checklist", "carousel", "clarity", "Family coordinators",
                                "Keep a list to review with a qualified professional.", "Save this post.")
-        errors, _ = validate_record(record, ContentValidationTests.schema)
+        errors, _ = validate_record(record, json.loads(SCHEMA_PATH.read_text(encoding="utf-8")))
         self.assertEqual(errors, [])
         self.assertEqual(record["status"], "idea")
         self.assertFalse(record["human_approved"])
@@ -110,7 +110,7 @@ class AIReviewTests(unittest.TestCase):
         self.assertTrue(output["review_report"]["human_review_required"])
 
     def test_needs_edits_and_block_map_to_safe_states(self):
-        record = ContentValidationTests.valid_record
+        record = sample_record()
         self.assertEqual(apply_review(record, {"verdict": "NEEDS_EDITS", "summary": "", "findings": []})["status"], "needs_edits")
         self.assertEqual(apply_review(record, {"verdict": "BLOCK", "summary": "", "findings": []})["status"], "blocked")
 
