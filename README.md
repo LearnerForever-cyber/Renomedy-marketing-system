@@ -17,18 +17,52 @@ Renomedy is being explored as a family medication-intelligence product. Do not c
 ## Structure
 - `strategy/` — audience hypotheses, positioning and growth plan
 - `agents/` — prompts for research, strategy, drafting, review and learning
-- `content/` — starter calendar and reusable brief
+- `content/` — starter calendar, reusable brief and JSON content records
 - `ops/` — approval checklist, metrics and weekly workflow
 - `config/` — brand and safety guardrails
-- `scripts/` — content-record validation
+- `scripts/` — content-record validation and draft scaffolding
+- `tests/` — regression tests for validation guardrails
 
 ## Quick start
+Install the validator dependency:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Create a new content record (it starts as an unapproved idea):
+
+```bash
+python scripts/new_content.py \
+  --title "A family medication information checklist" \
+  --format carousel \
+  --pillar clarity \
+  --audience "Family members coordinating appointments" \
+  --takeaway "Keep an up-to-date list to review with a qualified professional." \
+  --cta "Save this checklist for your next appointment."
+```
+
+Validate every JSON record in `content/` (including drafts in subfolders):
+
+```bash
+python scripts/validate_content.py content/
+```
+
+Run the automated tests:
+
+```bash
+PYTHONPATH=scripts python -m unittest discover -s tests -v
+```
+
+## Human approval is mandatory
 1. Read `strategy/instagram-growth-plan.md`.
 2. Confirm `config/brand-guardrails.json` against the actual product.
-3. Copy `content/brief-template.md` for each post.
-4. Review claims and get human approval before publishing.
-5. Log metrics in `ops/instagram-metrics.csv`.
-6. Run `python scripts/validate_content.py content/sample-post.json`.
+3. Review every factual claim and its source; get qualified review where needed.
+4. Review privacy, brand voice, and product truth.
+5. Get explicit human approval before publishing.
+6. Log metrics in `ops/instagram-metrics.csv`.
+
+A passing validator means the record meets structural and hard-coded checks. It is not a medical, legal, privacy, or brand clearance and never grants publishing permission.
 
 ## Not included yet
 No model-provider wiring, automated research ingestion, Instagram API publishing, analytics integrations, or verified compliance/security claims. Add these only after selecting providers, access scopes and approval controls.
