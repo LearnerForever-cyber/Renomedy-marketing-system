@@ -1,0 +1,21 @@
+{
+  "id": "sample-001",
+  "status": "draft",
+  "format": "carousel",
+  "pillar": "clarity",
+  "working_title": "A family medication information checklist",
+  "audience_hypothesis": "A family member who helps coordinate appointments",
+  "takeaway": "Keep an up-to-date information list to review with a qualified professional.",
+  "cta": "Save this checklist for your next appointment.",
+  "claims": [
+    {
+      "text": "Bring an up-to-date list of medicines and supplements to a medication review.",
+      "source_url": "",
+      "verified": false,
+      "review_required": true
+    }
+  ],
+  "product_features_mentioned": [],
+  "asks_for_public_health_details": false,
+  "human_approved": false
+}
