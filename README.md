@@ -20,7 +20,10 @@ Configure the model API in your shell. Never commit API keys to Git:
     export RENOMEDY_LLM_MODEL="your-enabled-model"
     export RENOMEDY_LLM_BASE_URL="https://api.openai.com/v1"
 
-Generate an AI-assisted draft:
+Run the full approval-first pipeline (draft → AI review → PNG assets):
+    python scripts/run_content_pipeline.py content/sample-post.json
+
+Individual stages remain available for debugging:
     python scripts/generate_draft.py content/sample-post.json
 
 Generate actual PNG assets from a draft record (no image API required):
