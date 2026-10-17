@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Renomedy Instagram content record",
+  "type": "object",
+  "required": ["id", "status", "format", "pillar", "working_title", "takeaway", "cta", "human_approved"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["idea", "briefed", "drafted", "review_needed", "needs_edits", "blocked", "awaiting_human_approval", "approved", "published", "measured"]},
+    "format": {"type": "string", "enum": ["carousel", "reel", "story", "founder_post"]},
+    "pillar": {"type": "string", "enum": ["clarity", "continuity", "coordination", "trust", "build_in_public"]},
+    "working_title": {"type": "string", "minLength": 1},
+    "audience_hypothesis": {"type": "string"},
+    "takeaway": {"type": "string", "minLength": 1},
+    "cta": {"type": "string", "minLength": 1},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "verified", "review_required"],
+        "properties": {
+          "text": {"type": "string"},
+          "source_url": {"type": "string"},
+          "verified": {"type": "boolean"},
+          "review_required": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "product_features_mentioned": {"type": "array", "items": {"type": "string"}},
+    "asks_for_public_health_details": {"type": "boolean"},
+    "human_approved": {"type": "boolean"},
+    "human_approver": {"type": "string"},
+    "published_url": {"type": "string"},
+    "metrics": {"type": "object"}
+  },
+  "additionalProperties": false
+}
