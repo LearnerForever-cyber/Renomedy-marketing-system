@@ -32,6 +32,10 @@ Validate content records and run tests:
     python scripts/validate_content.py content/
     PYTHONPATH=scripts python -m unittest discover -s tests -v
 
+## Ready-to-post launch batch
+
+The first 11-post Instagram batch is prepared. See [launch batch and asset inventory](content/launch-batch-01.md) and [launch-readiness checklist](ops/launch-readiness.md). The conversation deliverable `renomedy-instagram-launch-pack.zip` contains 25 PNG graphics (3 carousels, 3 static posts, 4 Story frames, 3 Reel covers), 11 captions, hashtags, alt-text guidance, 3 Reel scripts, and a posting guide. Story polls still need native Instagram stickers; Reel videos still need recording/editing. The graphics use provisional colors and a placeholder mascot mark, so confirm brand approval before posting.
+
 ## Workflow
 1. Research audience questions and retain sources/date/confidence.
 2. Turn supported insights into a brief.
