@@ -46,6 +46,17 @@
         "cover_text": {"type": "string"}
       },
       "additionalProperties": false
+    },
+    "review_report": {
+      "type": "object",
+      "required": ["verdict", "summary", "findings", "human_review_required"],
+      "properties": {
+        "verdict": {"type": "string", "enum": ["PASS", "NEEDS_EDITS", "BLOCK"]},
+        "summary": {"type": "string"},
+        "findings": {"type": "array", "items": {"type": "string"}},
+        "human_review_required": {"type": "boolean", "const": true}
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
