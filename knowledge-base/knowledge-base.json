@@ -1,0 +1,22 @@
+{
+  "name": "Renomedy Brand Knowledge Base",
+  "version": "0.2.0",
+  "status": "source_audited_draft_owner_approval_required",
+  "reviewed_on": "2026-10-22",
+  "primary_public_source": "https://getrenomedy.framer.website/",
+  "public_product_status": "in_development_not_yet_available",
+  "critical_instruction": "Do not present intended capabilities as live features. Consult sources/fact-ledger.md before making claims.",
+  "documents": [
+    "README.md",
+    "audience/priority-audiences.md",
+    "brand/brand-identity.md",
+    "brand/voice-and-messaging.md",
+    "product/product-overview.md",
+    "safety/health-claims-and-guardrails.md",
+    "sources/fact-ledger.md",
+    "sources/source-register.md",
+    "strategy/open-questions.md",
+    "strategy/positioning-and-hypotheses.md",
+    "templates/campaign-brief.md"
+  ]
+}
