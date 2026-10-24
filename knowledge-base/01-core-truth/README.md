@@ -4,7 +4,7 @@
 
 ## Stages
 1. [Stage 1 — Company Foundation](stage-01-company-foundation/README.md) — expanded draft; owner approval pending.
-2. Stage 2 — Product Truth — pending expansion.
+2. [Stage 2 — Product Truth](stage-02-product-truth/README.md) — expanded evidence-aware draft; owner approval pending.
 3. Stage 3 — Audience, Strategy & Safety — pending expansion.
 
 ## Rules
