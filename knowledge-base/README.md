@@ -8,7 +8,7 @@
 
 A source-aware knowledge base for Renomedy's future marketing and AI-agent workflows. It distinguishes current public statements from internal vision, hypotheses, and unknowns. It is not proof that a feature is implemented.
 
-The current public website says Renomedy is in development, not yet available, and that the screens are illustrative concepts. Do not market Renomedy as a live app unless the owner updates the status with relevant verification.
+The latest recorded public-site snapshot (accessed 2026-10-22, per the source register) says Renomedy is in development, not yet available, and that the screens are illustrative concepts. A fresh access attempt on 2026-10-24 failed through the available web retrieval tool, so this status has not been independently rechecked today. Do not market Renomedy as a live app unless newer evidence is recorded.
 
 ## Master structure
 
@@ -16,7 +16,7 @@ The knowledge base is being expanded as four blocks containing twelve stages. Th
 
 - [Block 1 — Core Truth](01-core-truth/README.md)
   - [Stage 1 — Company Foundation](01-core-truth/stage-01-company-foundation/README.md) — expanded draft, owner review pending.
-  - Stage 2 — Product Truth — pending.
+  - [Stage 2 — Product Truth](01-core-truth/stage-02-product-truth/README.md) — expanded evidence-aware draft; owner review pending.
   - Stage 3 — Audience, Strategy & Safety — pending.
 - Block 2 — Brand System — pending expansion.
   - Stage 4 — Identity System.
