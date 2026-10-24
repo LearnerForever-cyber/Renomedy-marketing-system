@@ -70,13 +70,7 @@ New stage documents should link to these sources rather than copying unsupported
 
 ## Work sequence
 
-Expand one stage at a time. For each stage:
-1. Review existing source material and decisions.
-2. Draft the stage README and numbered Markdown files.
-3. Separate evidence, assumptions, recommendations, and owner decisions.
-4. Check consistency against the current knowledge base.
-5. Publish the stage files on the `Marketing-Crew` branch.
-6. Mark the stage as awaiting owner review; do not treat publication as approval.
+All twelve stages now have working draft files on the `Marketing-Crew` branch. Each stage still requires owner review and any missing source or specialist verification before being treated as canonical. For each stage, the documents separate recorded source facts, internal context, hypotheses, recommendations, and unresolved questions.
 
 No codebase or technical-app implementation work is part of this knowledge-base expansion. The priority is to complete and review all four knowledge-base blocks before moving on to building the agents.
 
