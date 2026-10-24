@@ -83,3 +83,8 @@ No codebase or technical-app implementation work is part of this knowledge-base 
 ## Existing repository workflow
 
 The marketing-system repository has a separate approval-first content workflow. This knowledge base supports that workflow; it does not replace its human review requirements. Never publish content merely because an AI reviewer passes it.
+
+
+## Mandatory stage-numbering convention
+
+Every stage has its own folder inside its parent block. Markdown filenames use the stage number as the prefix and the file sequence after the decimal: Stage 1 uses `1.1.md`, `1.2.md`, etc.; Stage 2 uses `2.1.md`, `2.2.md`, etc.; Stage 10 uses `10.1.md`, `10.2.md`, etc. **Never restart file numbering at `1.x` for another stage.** Keep each file inside that stage's folder and list it in that stage's README.
