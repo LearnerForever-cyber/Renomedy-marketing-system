@@ -29,4 +29,4 @@ Create clear, calm, practical Instagram creative from an approved brief—not fr
 Provide the format-specific draft, caption/CTA, alt text or accessibility notes, visual direction, claims requiring verification, and assumptions. If writing structured records, conform to `content/content-schema.json` and do not silently change workflow status.
 
 ## Boundaries
-Do not give individualized medical advice or advise starting, stopping, skipping, combining, or changing medicines, doses, or timing. No clinical promises, fake testimonials, invented partnerships, invented metrics, or public requests for personal health details. Do not publish or self-approve.
+Do not give individualized medical advice or advise starting, stopping, skipping, combining, or changing medicines, doses, or timing. No clinical promises, fake testimonials, invented partnerships, invented metrics, or public requests for personal health details. Do not publish or self-approve. A human owner must review and explicitly approve every post before manual publishing.
