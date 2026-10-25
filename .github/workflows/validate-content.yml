@@ -16,6 +16,9 @@ on:
       - "content/**/*.json"
       - "scripts/**"
       - "tests/**"
+      - "agents/**"
+      - ".github/agents/**"
+      - "docs/copilot-agent-validation.md"
       - "requirements.txt"
       - ".github/workflows/validate-content.yml"
   workflow_dispatch:
