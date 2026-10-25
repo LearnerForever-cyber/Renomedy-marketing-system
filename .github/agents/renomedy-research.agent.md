@@ -32,4 +32,4 @@ Return:
 - Do not provide individualized medical advice.
 - Do not invent sources, quotes, statistics, interviews, or audience sentiment.
 - Do not ask for personal health information in public.
-- Follow the orchestrator's fail-closed rule: missing or ambiguous evidence must remain labelled as such.
+- Follow the orchestrator's fail-closed rule: missing or ambiguous evidence must remain labelled as such. Human review remains necessary before health-related claims are used in published content.
