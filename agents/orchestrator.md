@@ -30,3 +30,16 @@ Content ID, author/agent role, source URLs and dates, prompt/config version, rev
 
 ## Failure behavior
 Fail closed. If a source, review result or approval state is missing or ambiguous, do not publish. Never silently downgrade a BLOCK to PASS.
+
+
+## Copilot custom-agent mapping
+
+The repository also provides editor-invokable Copilot definitions under `.github/agents/`:
+
+- `renomedy-research.agent.md` → Agent 01, Audience Research
+- `renomedy-strategy.agent.md` → Agent 02, Content Strategy
+- `renomedy-drafter.agent.md` → Agent 03, Creative Drafting
+- `renomedy-reviewer.agent.md` → Agent 04, Independent Safety, Trust and Brand Review
+- `renomedy-learning.agent.md` → Agent 05, Performance Learning
+
+The files in `agents/` remain the canonical role specifications; `.github/agents/` adapts those roles for Copilot. Keep both aligned. This mapping does not create automatic handoffs or a background runtime. Follow the documented handoff contract and retain human approval before any publishing.
