@@ -68,3 +68,10 @@ The first 11-post Instagram batch is prepared. See [launch batch and asset inven
 - ops/ — approval and measurement workflows
 - scripts/ — idea creation, AI drafting, review and validation
 - tests/ — regression tests
+
+
+## GitHub Copilot marketing agents
+
+Five repository custom-agent definitions live in `.github/agents/`: Research, Content Strategist, Content Drafter, Safety and Brand Review, and Performance Learning. Each definition is grounded in the canonical role prompts in `agents/` and the repository's brand, product-truth, privacy, and healthcare guardrails.
+
+See [Copilot agent setup and validation](docs/copilot-agent-validation.md) for the handoff contract, static checks, and manual editor smoke tests. These definitions make the roles available as custom agents in a compatible Copilot client; they do not by themselves implement autonomous agent-to-agent orchestration. Human approval and manual publishing remain mandatory.
